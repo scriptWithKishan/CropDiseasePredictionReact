@@ -7,7 +7,7 @@ import { setRedirect } from "../../redux/HeaderSlice";
 
 export const LoginMiddleware = async (dispatch, email, password, navigate) => {
   try {
-    const response = await axios.post("http://localhost:4000/api/auth/login", {
+    const response = await axios.post("https://agritech-api-60wp.onrender.com/api/auth/login", {
       email,
       password,
     });

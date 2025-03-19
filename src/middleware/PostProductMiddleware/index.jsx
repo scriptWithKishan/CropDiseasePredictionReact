@@ -6,7 +6,7 @@ import { setError, clearProduct } from "../../redux/AddProductSlice";
 export const PostProductMiddleware = (formData) => async (dispatch) => {
   try {
     const response = await axios.post(
-      "http://localhost:4000/api/product",
+      "https://agritech-api-60wp.onrender.com/api/product",
       formData,
       {
         headers: {

@@ -6,7 +6,7 @@ import { setError, clearLoading, setResult } from "../../redux/PredictSlice";
 export const PredictMiddleware = (formData) => async (dispatch) => {
   try {
     const response = await axios.post(
-      "http://localhost:4000/api/predict/",
+      "https://agritech-api-60wp.onrender.com/api/predict/",
       formData,
       {
         headers: {

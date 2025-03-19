@@ -7,7 +7,7 @@ export const GetProductsMiddleware = async (dispatch) => {
   try {
     dispatch(setLoading(true));
 
-    const response = await axios.get("http://localhost:4000/api/product", {
+    const response = await axios.get("https://agritech-api-60wp.onrender.com/api/product", {
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
       },

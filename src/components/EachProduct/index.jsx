@@ -44,7 +44,7 @@ const stars = Array(5).fill(0);
 
 function EachProduct(props) {
   const imageArray = props.product.images.split(",");
-  const imageUrls = imageArray.map((image) => `http://localhost:4000/${image}`);
+  const imageUrls = imageArray.map((image) => `https://agritech-api-60wp.onrender.com/${image}`);
   let rating = Math.round(props.product.ratingsAverage);
 
   console.log(props.product);

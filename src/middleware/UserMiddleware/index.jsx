@@ -12,7 +12,7 @@ export const UserMiddleware = async (dispatch) => {
     const userId = decodedToken.id;
 
     const response = await axios.get(
-      `http://localhost:4000/api/user/${userId}`,
+      `https://agritech-api-60wp.onrender.com/api/user/${userId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
