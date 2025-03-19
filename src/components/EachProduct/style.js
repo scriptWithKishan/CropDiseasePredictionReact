@@ -6,7 +6,7 @@ export const ProductItem = styled.div`
   font-family: "Poppins", sans-serif;
 `;
 
-export const ProductImage = styled.img`
+export const ProductImg = styled.img`
   width: 300px;
   height: 250px;
   object-fit: contain;
