@@ -1,7 +1,6 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
-import ReactImageMagnify from "react-image-magnify";
-import "react-multi-carousel/lib/styles.css";
+
 
 import {
   ProductItem,
@@ -16,6 +15,7 @@ import {
   DiscountPrice,
   OriginalPrice,
   Scratched,
+  ProductImg,
 } from "./style";
 
 const responsive = {
@@ -66,26 +66,7 @@ function EachProduct(props) {
             removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
           >
             {imageUrls.map((imageUrl, index) => (
-              <ReactImageMagnify
-                {...{
-                  smallImage: {
-                    alt: "Wristwatch by Versace",
-                    width: 300,
-                    height: 250,
-                    src: imageUrl,
-                  },
-                  largeImage: {
-                    src: imageUrl,
-                    width: 720,
-                    height: 1200,
-                  },
-                  enlargedImagePosition: "over",
-                  enlargedImageContainerStyle: {
-                    zIndex: 9999,
-                  },
-                }}
-                style={{ objectFit: "contain" }}
-              />
+              <ProductImg key={index} src={imageUrl} alt={props.product.name} />
             ))}
           </Carousel>
         </div>

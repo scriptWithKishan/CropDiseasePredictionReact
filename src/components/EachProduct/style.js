@@ -6,6 +6,12 @@ export const ProductItem = styled.div`
   font-family: "Poppins", sans-serif;
 `;
 
+export const ProductImage = styled.img`
+  width: 300px;
+  height: 250px;
+  object-fit: contain;
+`;
+
 export const ProductDetails = styled.div`
   width: 100%;
   padding-left: 20px;
