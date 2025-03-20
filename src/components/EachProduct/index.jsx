@@ -1,6 +1,11 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "reactjs-popup/dist/index.css";
+
+import Reviews from "../Reviews";
+import ReviewInput from "../ReviewInput";
+import AddToCart from "../AddToCart";
 
 import {
   ProductItem,
@@ -16,7 +21,16 @@ import {
   OriginalPrice,
   Scratched,
   ProductImg,
+  StockContainer,
+  Stock,
+  ReactPopup,
+  ReviewButton,
+  ReviewContainer,
+  ReviewHeading,
+  ReviewList,
 } from "./style";
+
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const responsive = {
   desktop: {
@@ -44,10 +58,8 @@ const stars = Array(5).fill(0);
 
 function EachProduct(props) {
   const imageArray = props.product.images.split(",");
-  const imageUrls = imageArray.map((image) => `https://agritech-api-60wp.onrender.com/${image}`);
+  const imageUrls = imageArray.map((image) => `${API_BASE_URL}/${image}`);
   let rating = Math.round(props.product.ratingsAverage);
-
-  console.log(props.product);
 
   return (
     <>
@@ -93,6 +105,37 @@ function EachProduct(props) {
               MRP: <Scratched>{props.product.price}</Scratched>
             </OriginalPrice>
           </PriceContainer>
+          <StockContainer>
+            <Stock stock={props.product.stock}>
+              {props.product.stock < 10
+                ? `Only ${props.product.stock} left`
+                : "In Stock"}
+            </Stock>
+            <AddToCart productId={props.product._id} stock={props.product.stock} />
+          </StockContainer>
+          <ReactPopup
+            trigger={<ReviewButton>Reviews</ReviewButton>}
+            modal
+            contentStyle={{
+              width: "80%",
+              height: "85%",
+              overflowY: "scroll",
+            }}
+          >
+            <ReviewContainer>
+              <ReviewHeading>Reviews</ReviewHeading>
+              <ReviewList>
+                {props.product.reviews.length > 0 ? (
+                  props.product.reviews.map((review) => (
+                    <Reviews key={review._id} review={review} />
+                  ))
+                ) : (
+                  <p>No Reviews</p>
+                )}
+              </ReviewList>
+              <ReviewInput productId={props.product._id} />
+            </ReviewContainer>
+          </ReactPopup>
         </ProductDetails>
       </ProductItem>
     </>

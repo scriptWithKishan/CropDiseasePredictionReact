@@ -5,9 +5,11 @@ import { setEmail, setPassword, setError } from "../../redux/LoginSlice";
 
 import { setRedirect } from "../../redux/HeaderSlice";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 export const LoginMiddleware = async (dispatch, email, password, navigate) => {
   try {
-    const response = await axios.post("https://agritech-api-60wp.onrender.com/api/auth/login", {
+    const response = await axios.post(`h${API_BASE_URL}/api/auth/login`, {
       email,
       password,
     });

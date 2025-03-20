@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
+import Popup from "reactjs-popup";
 
 export const ProductItem = styled.div`
   display: flex;
@@ -7,8 +8,8 @@ export const ProductItem = styled.div`
 `;
 
 export const ProductImg = styled.img`
-  width: 300px;
-  height: 250px;
+  width: 350px;
+  height: 280px;
   object-fit: contain;
 `;
 
@@ -93,4 +94,57 @@ export const OriginalPrice = styled.p`
 
 export const Scratched = styled.span`
   text-decoration: line-through;
+`;
+
+export const StockContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+export const Stock = styled.p`
+  color: ${(props) => (props.stock <= 10 ? "red" : "green")};
+  font-size: 12px;
+  margin: 0;
+  margin-right: 10px;
+  font-weight: bold;
+`;
+
+export const ReactPopup = styled(Popup)``;
+
+export const ReviewButton = styled.button`
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  border: 0px solid #ccc;
+  margin-top: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+
+  &:hover {
+    text-decoration: underline;
+    color: rgb(21, 0, 255);
+  }
+`;
+
+export const ReviewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  font-family: "Poppins", sans-serif;
+  height: 90%;
+`;
+
+export const ReviewHeading = styled.h1`
+  align-self: center;
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+  height: 10%;
+`;
+
+export const ReviewList = styled.ul`
+  padding-left: 0;
+  list-style-type: none;
+  overflow-y: scroll;
+  height: 80%;
 `;
