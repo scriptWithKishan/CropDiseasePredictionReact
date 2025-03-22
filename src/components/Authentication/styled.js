@@ -49,12 +49,12 @@ export const Logo = styled.img`
 
 export const SignInButton = styled.button`
   background-color: transparent;
-  color: ${(props) => (props.login == "true" ? "#ffffff" : "#b3b3b3")};
+  color: ${(props) => (props.$login == "true" ? "#ffffff" : "#b3b3b3")};
   border: 0px solid #ffffff;
   height: 50px;
   width: 150px;
   border-radius: 25px;
-  font-size: ${(props) => (props.login == "true" ? "25px" : "16px")};
+  font-size: ${(props) => (props.$login == "true" ? "25px" : "16px")};
   font-weight: bold;
   cursor: pointer;
   transition: color 0.5s ease-in-out, font-size 0.5s ease-in-out;
@@ -62,12 +62,12 @@ export const SignInButton = styled.button`
 
 export const SignUpButton = styled.button`
   background-color: transparent;
-  color: ${(props) => (props.login == "false" ? "#ffffff" : "#b3b3b3")};
+  color: ${(props) => (props.$login == "false" ? "#ffffff" : "#b3b3b3")};
   border: 0px solid #ffffff;
   height: 50px;
   width: 150px;
   border-radius: 25px;
-  font-size: ${(props) => (props.login == "false" ? "25px" : "16px")};
+  font-size: ${(props) => (props.$login == "false" ? "25px" : "16px")};
   font-weight: bold;
   cursor: pointer;
   transition: color 0.5s ease-in-out, font-size 0.5s ease-in-out;

@@ -9,7 +9,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export const LoginMiddleware = async (dispatch, email, password, navigate) => {
   try {
-    const response = await axios.post(`h${API_BASE_URL}/api/auth/login`, {
+    const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
       email,
       password,
     });
@@ -27,7 +27,7 @@ export const LoginMiddleware = async (dispatch, email, password, navigate) => {
     if (error) {
       dispatch(setError(error.data.message));
     } else {
-      dispatch(setError("Network Error! Please try again."));
+      dispatch(setError(`Network Error! Please try again, ${error}`));
     }
   }
 };

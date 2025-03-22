@@ -64,14 +64,14 @@ function Authentication() {
           />
           <SignInButton
             type="button"
-            login={login.toString()}
+            $login={login.toString()}
             onClick={() => dispatch(toggleLogin(true))}
           >
             Sign In
           </SignInButton>
           <SignUpButton
             type="button"
-            login={login.toString()}
+            $login={login.toString()}
             onClick={() => dispatch(toggleLogin(false))}
           >
             Sign Up
