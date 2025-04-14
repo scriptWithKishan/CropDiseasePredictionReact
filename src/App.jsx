@@ -9,13 +9,11 @@ import Profile from "./components/Profile";
 import Admin from "./components/Admin";
 import AddProduct from "./components/AddProduct";
 import Products from "./components/Products";
+import Orders from "./components/Orders";
 
 import "./App.css";
 
 function App() {
-
-  
-
   return (
     <Routes>
       <Route path="/auth" element={<Authentication />} />
@@ -27,6 +25,7 @@ function App() {
         <Route element={<Admin />}>
           <Route path="/add/product" element={<AddProduct />} />
         </Route>
+        <Route path="/orders" element={<Orders />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

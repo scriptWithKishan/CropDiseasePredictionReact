@@ -32,7 +32,6 @@ function Header() {
   };
 
   useEffect(() => {
-    console.log("Header useEffect");
     UserMiddleware(dispatch);
   }, []);
 
@@ -61,6 +60,7 @@ function Header() {
           </>
         )}
         <StyledNavItem to="/products">Products</StyledNavItem>
+        <StyledNavItem to="/orders">Orders</StyledNavItem>
       </NavContent>
       <Logout type="button" onClick={logout}>
         Logout

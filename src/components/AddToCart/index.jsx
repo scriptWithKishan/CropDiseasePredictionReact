@@ -1,5 +1,8 @@
 import Popup from "reactjs-popup";
 import { useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
 
 import {
   BuyButton,
@@ -11,6 +14,28 @@ import {
 
 const AddToCart = (props) => {
   const [quantity, setQuantity] = useState(1);
+  const { user } = useSelector((store) => store.userState);
+
+  const addToCart = async () => {
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/api/cart/add`,
+        {
+          productId: props.productId,
+          userId: user._id,
+          quantity,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <Popup
@@ -22,14 +47,20 @@ const AddToCart = (props) => {
       position="right center"
     >
       <QuantityContainer>
-        <QuantityController onClick={() => setQuantity(quantity - 1)}>
+        <QuantityController
+          disabled={quantity <= 1}
+          onClick={() => setQuantity(quantity - 1)}
+        >
           -
         </QuantityController>
         <Quantity>{quantity}</Quantity>
-        <QuantityController onClick={() => setQuantity(quantity + 1)}>
+        <QuantityController
+          disabled={quantity >= props.stock}
+          onClick={() => setQuantity(quantity + 1)}
+        >
           +
         </QuantityController>
-        <AddButton>Add</AddButton>
+        <AddButton onClick={addToCart}>Add</AddButton>
       </QuantityContainer>
     </Popup>
   );
