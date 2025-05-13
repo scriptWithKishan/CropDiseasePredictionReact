@@ -149,3 +149,29 @@ export const ErrorMessage = styled.p`
   font-size: 15px;
   font-style: italic;
 `;
+
+export const Select = styled.select`
+  width: 50%;
+  height: 50px;
+  border: 0px solid #ccc;
+  border-bottom: 2px solid #b2e3b1;
+  padding: 10px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin: 10px;
+  color: #b2e3b1;
+  outline: none;
+  transition: border-bottom 0.5s ease-in-out, color 0.5s ease-in-out;
+
+  &::placeholder {
+    color: #b2e3b1;
+    transition: color 0.5s ease-in-out;
+  }
+`;
+
+export const Option = styled.option`
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  color: #4d4d4d;
+`;

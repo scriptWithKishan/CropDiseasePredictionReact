@@ -8,13 +8,14 @@ const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const EachOrderItem = (props) => {
   const { item } = props;
+  console.log(props);
   const [product, setProduct] = useState({});
 
   useEffect(() => {
     const getProduct = async () => {
       try {
         const response = await axios.get(
-          `${API_BASE_URL}/api/product/${item.product}`,
+          `${API_BASE_URL}/api/product/${item.product["_id"]}`,
           {
             headers: {
               Authorization: `Bearer ${Cookies.get("token")}`,

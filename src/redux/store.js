@@ -6,6 +6,7 @@ import AddProductSlice from "./AddProductSlice";
 import ProductsSlice from "./ProductsSlice";
 import PredictSlice from "./PredictSlice";
 import ReviewSlice from "./ReviewSlice";
+import SignInSlice from "./SignInSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     productsState: ProductsSlice,
     predictState: PredictSlice,
     reviewState: ReviewSlice,
+    signInState: SignInSlice,
   },
 });
 

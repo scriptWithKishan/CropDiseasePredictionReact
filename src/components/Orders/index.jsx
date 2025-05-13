@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import {
   OrderContainer,
@@ -18,18 +19,24 @@ import EachOrderItem from "../EachOrderItem";
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const Orders = () => {
+  const { user } = useSelector((store) => store.userState);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/order`, {
-          headers: {
-            Authorization: `Bearer ${Cookies.get("token")}`,
-          },
-        });
+        const response = await axios.get(
+          `${API_BASE_URL}/api/order/${user._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${Cookies.get("token")}`,
+            },
+          }
+        );
 
-        setOrders(response.data.data);
+        console.log(response);
+
+        setOrders(response.data.orders);
       } catch (err) {
         console.log(err.message);
       }

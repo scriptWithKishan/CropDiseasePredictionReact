@@ -53,10 +53,10 @@ function Header() {
           <p>Loading...</p>
         ) : (
           <>
-            <StyledNavItem to="/profile">{user.name}</StyledNavItem>
-            {user.role === "admin" && (
+            <StyledNavItem to="/profile">{user && user.name}</StyledNavItem>
+            {user && user.role === "admin" ? (
               <StyledNavItem to="/add/product">Seller</StyledNavItem>
-            )}
+            ) : null}
           </>
         )}
         <StyledNavItem to="/products">Products</StyledNavItem>
